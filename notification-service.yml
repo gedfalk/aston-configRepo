@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://discovery-server:8761/eureka/
     register-with-eureka: true
     fetch-registry: true
 
@@ -13,7 +13,7 @@ spring:
     name: notification-service
 
   kafka:
-    bootstrap-servers: localhost:29092
+    bootstrap-servers: kafka:9092
     consumer:
       group-id: notification-service-group
       auto-offset-reset: earliest
@@ -25,8 +25,10 @@ spring:
         spring.json.value.default.type: dev.gedfalk.notificationservice.dto.UserEventDto
 
   mail:
-    host: localhost
-    port: 3025
+#    host: localhost
+#    port: 3025
+    host: mailhog
+    port: 1025
     protocol: smtp
     default-encoding: UTF-8
     properties:
